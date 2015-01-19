@@ -71,7 +71,7 @@ class Objective (object):
     def __init__(self, coefficients):
         self.coefficients = coefficients
 
-    def calculate(self, point):
+    def __call__(self, point):
         """
         Get the value of the optimization function at the given point.
         """
@@ -86,7 +86,8 @@ def solve(constraints, objective, opt=max):
     ---------
     * constraints: A list or set of constraint objects.
 
-    * objective:   An objective function object.
+    * objective:   An objective function. This is any callable that takes a
+                   point as its only argument and returns a number.
 
     * opt:         An optimization function. This will either be max, min, or
                    some other function that has a similar signature.
